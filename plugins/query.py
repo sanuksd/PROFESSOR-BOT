@@ -252,12 +252,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 return await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
             else:
-                await client.send_cached_media(
+                tg = await client.send_cached_media(
                     chat_id=query.from_user.id,
                     file_id=file_id,
                     caption=f_caption,
                     protect_content=True if ident == "pmfilep" else False                    
-                )                       
+                )
+                await asyncio.sleep(60) 
+                await tg.delete()                       
         except Exception as e:
             await query.answer(f"⚠️ Error {e}", show_alert=True)
         
@@ -284,18 +286,22 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f"{files.file_name}"        
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                tgr = await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}") 
+                await asyncio.sleep(60) 
+                await tgr.delete()
                 return
             elif settings['botpm']:
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             else:
-                await client.send_cached_media(
+                kt = await client.send_cached_media(
                     chat_id=query.from_user.id,
                     file_id=file_id,
                     caption=f_caption,
                     protect_content=True if ident == "filep" else False 
                 )
+                await asyncio.sleep(60) 
+                await kt.delete()
                 await query.answer('Check PM, I have sent files in pm', show_alert=True)
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
@@ -326,12 +332,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if f_caption is None:
             f_caption = f"{title}"
         await query.answer()
-        await client.send_cached_media(
+        gy = await client.send_cached_media(
             chat_id=query.from_user.id,
             file_id=file_id,
             caption=f_caption,
             protect_content=True if ident == 'checksubp' else False
         )
+        await asyncio.sleep(60) 
+        await gy.delete()
 
 
     elif query.data == "removebg":
