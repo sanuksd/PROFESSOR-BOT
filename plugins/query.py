@@ -621,7 +621,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons= [[
-            InlineKeyboardButton('❣️ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴 ❣️', callback_data='source')
+            InlineKeyboardButton(' ➬ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴 ', callback_data='source')
             ],[
             InlineKeyboardButton('🏠 𝙷𝙾𝙼𝙴 🏠', callback_data='start'),
             InlineKeyboardButton('🔐 𝙲𝙻𝙾𝚂𝙴 🔐', callback_data='close_data')
@@ -633,13 +633,46 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "source":
         buttons = [[
-            InlineKeyboardButton('SOURCE CODE', url='https://github.com/MrMKN/PROFESSOR-BOT')
+            InlineKeyboardButton('♛ 𝙼𝙾𝚁𝙴 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 ♛', url='https://t.me/sanubots')
             ],[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.edit_message_media(
             InputMediaPhoto(random.choice(PICS), script.SOURCE_TXT, enums.ParseMode.HTML),
+            reply_markup=reply_markup,            
+        )
+    elif query.data == "disclaimer":
+        buttons= [[
+            InlineKeyboardButton(' Admin ', url='https://t.me/Thisis_sanu')
+            ],[
+            InlineKeyboardButton('🏠 𝙷𝙾𝙼𝙴 🏠', callback_data='start'),
+            InlineKeyboardButton('🔐 𝙲𝙻𝙾𝚂𝙴 🔐', callback_data='close_data')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.edit_message_media(
+            InputMediaPhoto(random.choice(PICS), script.DISCLAIMER_TXT, enums.ParseMode.HTML),
+            reply_markup=reply_markup,            
+        )
+    elif query.data == "channels":
+        buttons= [[
+            InlineKeyboardButton(' ♠ 𝙼𝙰𝙸𝙽 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 ♠ ', url='https://t.me/+cDIjx6c8NcdlNmM5')
+            ],[
+            InlineKeyboardButton(' ♠ 𝚂𝙿𝙾𝙽𝙲𝙴𝚁 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 ♠ ', url='https://t.me/+1ln9xnUu9nc2NTI1')
+            ],[
+            InlineKeyboardButton(' ♠ 𝙼𝙰𝙸𝙽 𝙶𝚁𝙾𝚄𝙿 ♠ ', url='https://t.me/+cHFG071nmPsyYzBh')
+            ],[
+            InlineKeyboardButton(' ♠ 𝙼𝙰𝙸𝙽 𝙾𝚃𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 ♠ ', url='https://t.me/+wcT6xMAi6IkwODMx')
+            ],[
+            InlineKeyboardButton('♠ 𝙾𝚃𝚃 𝙲𝙷 2 ♠', url='https://t.me/+HCTV9ikiHDg0ZGEx'),
+            InlineKeyboardButton('♠ 𝙾𝚃𝚃 𝙲𝙷 3 ♠', url='https://t.me/+E7aCflT5AhY2YjFh')
+           ],[
+            InlineKeyboardButton('🏠 𝙷𝙾𝙼𝙴 🏠', callback_data='start'),
+            InlineKeyboardButton('🔐 𝙲𝙻𝙾𝚂𝙴 🔐', callback_data='close_data')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.edit_message_media(
+            InputMediaPhoto(random.choice(PICS), script.CHANNELS_TXT, enums.ParseMode.HTML),
             reply_markup=reply_markup,            
         )
     elif query.data == "restric":
